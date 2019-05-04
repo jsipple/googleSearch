@@ -20,7 +20,7 @@ function Jumbotron(props) {
         <div>
             <Grid container spacing={24} justify='center'>
                 <Grid item xs='10'>
-                    <Paper className='paper'>hello</Paper>
+                    <Paper className='paper'>results:</Paper>
                 </Grid>
             </Grid>
         </div>

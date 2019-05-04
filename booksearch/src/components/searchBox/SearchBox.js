@@ -15,16 +15,25 @@ const styles = theme => ({
     },
   });
 
-function Jumbotron(props) {
+function SearchBox(props) {
+
     return(
         <div>
             <Grid container spacing={24} justify='center'>
                 <Grid item xs='10'>
-                    <Paper className='paper'>hello</Paper>
+                    <Paper className='paper'>
+                      <h3>search for books</h3>
+                        <form onSubmit={props.handleClick(props.searchTerm)}>
+                        <input name='searchTerm' type='text' onChange={props.handleChange}/>
+                        <button onClick={props.handleClick(props.searchTerm)}>search</button>
+                        </form>
+                        {/* add margin */}
+                        <br />
+                    </Paper>
                 </Grid>
             </Grid>
         </div>
     )
 }
 
-export default withStyles(styles)(Jumbotron);
+export default withStyles(styles)(SearchBox);
