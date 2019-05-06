@@ -6,7 +6,7 @@ import Jumbotron from './components/jumbotron/Jumbotron'
 import SearchBox from './components/searchBox/SearchBox'
 import axios from 'axios'
 import Results from './components/results/Results'
-
+import keys from './keys'
 class App extends Component {
   state = {
     searchTerm: '',
@@ -16,7 +16,7 @@ class App extends Component {
     e.preventDefault()
     // move the key to a different file with a gitignore on it
     // running on change for some reason
-    axios.get('https://www.googleapis.com/books/v1/volumes?q=' + this.state.searchTerm + '+intitle:&key=AIzaSyCMzb2LstmY2crEcxy3rWOtl9VOovK3yO4', (req, res) => {
+    axios.get('https://www.googleapis.com/books/v1/volumes?q=' + this.state.searchTerm + keys.google, (req, res) => {
       console.log(res)
     })
     .then(response => {
@@ -37,12 +37,15 @@ class App extends Component {
       book: this.state.books[e.target.id]
     })
   }
-  getFavorites = (e) => {
+  getFavorites = () => {
     axios.get('/api/favs', (req,res) => {
       this.setState({
         book: req.body
       })
     })
+  }
+  removeFavorite = (id) => {
+    axios.delete('/api/delete/' + id)
   }
   render() {
     return (
@@ -59,4 +62,9 @@ class App extends Component {
           />
           <Results favorite={this.favorite} books={this.state.books} />          
         </BrowserRouter>
-    
+      </div>
+    );
+  }
+}
+
+export default App;
