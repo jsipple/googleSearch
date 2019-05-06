@@ -23,9 +23,9 @@ function SearchBox(props) {
                 <Grid item xs='10'>
                     <Paper className='paper'>
                       <h3>search for books</h3>
-                        <form onSubmit={props.handleClick(props.searchTerm)}>
+                        <form onSubmit={props.handleClick}>
                         <input name='searchTerm' type='text' onChange={props.handleChange}/>
-                        <button onClick={props.handleClick(props.searchTerm)}>search</button>
+                        <button onClick={props.handleClick}>search</button>
                         </form>
                         {/* add margin */}
                         <br />

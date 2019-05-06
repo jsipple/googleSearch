@@ -26,6 +26,7 @@
       "not dead",
       "not op_mini all"
     ],
+  "proxy": "localhost:8080",
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
